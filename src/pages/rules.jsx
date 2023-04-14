@@ -19,7 +19,7 @@ export default function GameRules() {
             <h2>Hey {username}</h2>
             {rules.map((rule) => {
                 return (
-                    <div>
+                    <div key={rule.title}>
                         <small>{rule.title}</small>
                         <p>{rule.rule}</p>
                     </div>
