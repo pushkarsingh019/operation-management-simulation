@@ -38,18 +38,28 @@ export default function Round1() {
 
     const onCheck = (event) => {
         event.preventDefault();
-        const isProductionTimeCorrect =
-            getCorrectProductionTime(productionTime);
-        setProductionTimeValid(isProductionTimeCorrect);
-        const isCapacityUtilisationCorrect =
-            getCapacityUtilization(capacityUtlisation);
-        setCapacityUtlisationValid(isCapacityUtilisationCorrect);
-        const isLabourCostCorrect = getLabourCost(labourCost);
-        setLabourCostValid(isLabourCostCorrect);
-        const isCostPerUnitCorrect = getCorrectCostPerUnit(costPerUnit);
-        setCostPerUnitValid(isCostPerUnitCorrect);
-        const isWipCostCorrect = calculateAverageWipCost(wipCost);
-        setWipCostValid(isWipCostCorrect);
+        if (productionTime !== undefined && productionTime !== null) {
+            const isProductionTimeCorrect =
+                getCorrectProductionTime(productionTime);
+            setProductionTimeValid(isProductionTimeCorrect);
+        }
+        if (capacityUtlisation !== undefined && capacityUtlisation !== null) {
+            const isCapacityUtilisationCorrect =
+                getCapacityUtilization(capacityUtlisation);
+            setCapacityUtlisationValid(isCapacityUtilisationCorrect);
+        }
+        if (labourCost !== undefined && labourCost !== null) {
+            const isLabourCostCorrect = getLabourCost(labourCost);
+            setLabourCostValid(isLabourCostCorrect);
+        }
+        if (costPerUnit !== undefined && costPerUnit !== null) {
+            const isCostPerUnitCorrect = getCorrectCostPerUnit(costPerUnit);
+            setCostPerUnitValid(isCostPerUnitCorrect);
+        }
+        if (wipCost !== undefined && wipCost !== null) {
+            const isWipCostCorrect = calculateAverageWipCost(wipCost);
+            setWipCostValid(isWipCostCorrect);
+        }
     };
 
     return (
@@ -69,7 +79,7 @@ export default function Round1() {
                 })}
             </div>
             <br />
-            <form onSubmit={onFormSubmit}>
+            <form>
                 <label>Total Production Time</label>
                 <br />
                 <input
@@ -77,6 +87,7 @@ export default function Round1() {
                     placeholder="Total Production Time"
                     value={productionTime}
                     onChange={(event) => setProductionTime(event.target.value)}
+                    required
                 />
                 <br />
                 {productionTimeHint ? (
@@ -103,6 +114,7 @@ export default function Round1() {
                     onChange={(event) =>
                         setCapacityUtilisation(event.target.value)
                     }
+                    required
                 />
                 <br />
                 {capacityUtlisationHint ? (
@@ -127,6 +139,7 @@ export default function Round1() {
                     placeholder="Labour Cost"
                     value={labourCost}
                     onChange={(event) => setLabourCost(event.target.value)}
+                    required
                 />
                 <br />
                 {labourCostHint ? (
@@ -151,6 +164,7 @@ export default function Round1() {
                     placeholder="Cost per unit"
                     value={costPerUnit}
                     onChange={(event) => setCostPerUnit(event.target.value)}
+                    required
                 />
                 <br />
                 {costPerUnitHint ? (
@@ -175,6 +189,7 @@ export default function Round1() {
                     placeholder="Average wip cost"
                     value={wipCost}
                     onChange={(event) => setWipCost(event.target.value)}
+                    required
                 />
                 <br />
                 {wipCostHint ? (
@@ -192,8 +207,8 @@ export default function Round1() {
                 ) : null}
                 <br />
                 <br />
-                <button onClick={onCheck}>check</button>
-                <button>next</button>
+                <button onClick={(event) => onCheck(event)}>check</button>
+                <button onClick={(event) => onFormSubmit(event)}>next</button>
             </form>
         </section>
     );
