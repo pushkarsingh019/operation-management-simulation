@@ -44,3 +44,12 @@ export const rules = [
         rule : "The players in this round will be given a variability for which they must calculate the working capital again or reduce the cost. That means the players must select the optimal amount of Lot size to determine the output."
     }
 ];
+
+
+export const roundOneHints = {
+    productionTime : "Total setup time + Total run time",
+    capacityUtlisation : "total production time + total available time",
+    labourCost : "average labour rate + employees  /  shift + total production time",
+    costPerUnit : "Total production cost / volume",
+    averageWipCost : "Cost per unit + WIP no of units",
+};
