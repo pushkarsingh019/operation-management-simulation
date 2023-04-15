@@ -9,6 +9,7 @@ import {
     getCorrectCostPerUnit,
     calculateAverageWipCost,
 } from "@/utils/roundOneData";
+import Link from "next/link";
 
 export default function Round1() {
     const [productionTime, setProductionTime] = useState();
@@ -29,12 +30,6 @@ export default function Round1() {
     const [labourCostValid, setLabourCostValid] = useState();
     const [costPerUnitValid, setCostPerUnitValid] = useState();
     const [wipCostValid, setWipCostValid] = useState();
-
-    const onFormSubmit = (event) => {
-        event.preventDefault();
-        // let result = calculateAverageWipCost(wipCost);
-        // alert(result);
-    };
 
     const onCheck = (event) => {
         event.preventDefault();
@@ -208,7 +203,7 @@ export default function Round1() {
                 <br />
                 <br />
                 <button onClick={(event) => onCheck(event)}>check</button>
-                <button onClick={(event) => onFormSubmit(event)}>next</button>
+                <Link href={"/roundTwo"}>next</Link>
             </form>
         </section>
     );
