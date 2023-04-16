@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useContext } from "react";
+import { CartContext } from "@/utils/store";
 
 import {
     getProductionTime,
@@ -22,6 +24,8 @@ export default function Round2() {
     const [costPerUnit, setCostPerUnit] = useState(getCostPerUnit(lotSize));
     const [wipCost, setWipCost] = useState(getAverageWipCost(lotSize));
 
+    const { username } = useContext(CartContext);
+
     const lotSizeHandler = (event) => {
         setLotSize(event.target.value);
         setProductionTime(getProductionTime(lotSize));
@@ -33,7 +37,8 @@ export default function Round2() {
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-        console.log(getNetValue(lotSize));
+        const netValue = getNetValue(lotSize);
+        console.log(netValue, username);
     };
 
     return (
