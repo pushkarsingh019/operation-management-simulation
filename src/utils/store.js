@@ -11,7 +11,7 @@ export function CartProvider({children}){
         username,
         roomName,
         addUsername,
-        addRoomName,
+        addRoomName
     };
     return <CartContext.Provider value={store}>{children}</CartContext.Provider>
 }
