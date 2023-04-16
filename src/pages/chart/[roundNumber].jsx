@@ -67,7 +67,7 @@ export default function ChartScreen() {
     return (
         <section>
             <h3>chart</h3>
-            <Link href={roundNumber === 2 ? `/${roomName}/roundThree` : `/end`}>
+            <Link href={roundNumber == 2 ? `/${roomName}/roundThree` : `/end`}>
                 next
             </Link>
             <br />
