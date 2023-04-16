@@ -12,9 +12,10 @@ import {
 
 import { getNetValue } from "../../utils/gameFunctions";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 export default function Round2() {
-    const { roomName } = useContext(CartContext);
+    const { roomName, username } = useContext(CartContext);
     const router = useRouter();
     const [lotSize, setLotSize] = useState(55500);
     const [productionTime, setProductionTime] = useState(
@@ -27,8 +28,6 @@ export default function Round2() {
     const [costPerUnit, setCostPerUnit] = useState(getCostPerUnit(lotSize));
     const [wipCost, setWipCost] = useState(getAverageWipCost(lotSize));
 
-    const { username } = useContext(CartContext);
-
     const lotSizeHandler = (event) => {
         setLotSize(event.target.value);
         setProductionTime(getProductionTime(lotSize));
@@ -38,9 +37,15 @@ export default function Round2() {
         setWipCost(getAverageWipCost(lotSize));
     };
 
-    const onFormSubmit = (event) => {
+    const onFormSubmit = async (event) => {
         event.preventDefault();
         const netValue = getNetValue(lotSize);
+        let { data } = await axios.post(`/api/choice`, {
+            username,
+            roomName,
+            netValue,
+            roundNumber: 2,
+        });
         router.push(`/${roomName}/roundThree`);
     };
 
