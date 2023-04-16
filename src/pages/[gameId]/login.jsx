@@ -6,7 +6,8 @@ import { useRouter } from "next/router";
 export default function login() {
     const router = useRouter();
     const [username, setUsername] = useState("");
-    const [roomName, setRoomName] = useState("");
+    const { gameId } = router.query;
+    const [roomName, setRoomName] = useState(gameId);
     const { addUsername, addRoomName } = useContext(CartContext);
 
     const onFormSubmit = (event) => {
