@@ -46,7 +46,7 @@ export default function Round2() {
             netValue,
             roundNumber: 2,
         });
-        router.push(`/${roomName}/roundThree`);
+        router.push(`/chart/2`);
     };
 
     return (

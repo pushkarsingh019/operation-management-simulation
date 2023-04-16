@@ -1,5 +1,5 @@
 import connectDatabase from "@/lib/connectDatabase";
-import { Choice } from "@/lib/choiceModel";
+import { Choice } from "@/lib/model";
 
 export default function handler(req, res) {
   try {
