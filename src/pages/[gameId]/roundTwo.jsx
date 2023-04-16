@@ -8,11 +8,14 @@ import {
     getLabourCost,
     getCostPerUnit,
     getAverageWipCost,
-} from "@/utils/roundTwo";
+} from "../../utils/roundTwo";
 
-import { getNetValue } from "../utils/gameFunctions";
+import { getNetValue } from "../../utils/gameFunctions";
+import { useRouter } from "next/router";
 
 export default function Round2() {
+    const { roomName } = useContext(CartContext);
+    const router = useRouter();
     const [lotSize, setLotSize] = useState(55500);
     const [productionTime, setProductionTime] = useState(
         getProductionTime(lotSize)
@@ -38,7 +41,7 @@ export default function Round2() {
     const onFormSubmit = (event) => {
         event.preventDefault();
         const netValue = getNetValue(lotSize);
-        console.log(netValue, username);
+        router.push(`/${roomName}/roundThree`);
     };
 
     return (

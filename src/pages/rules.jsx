@@ -6,7 +6,8 @@ import { useRouter } from "next/router";
 import { rules } from "@/utils/gameData";
 
 export default function GameRules() {
-    const { username } = useContext(CartContext);
+    const { username, roomName } = useContext(CartContext);
+    console.log(roomName);
     const router = useRouter();
 
     useEffect(() => {
@@ -25,7 +26,9 @@ export default function GameRules() {
                     </div>
                 );
             })}
-            <button onClick={() => router.push("/roundOne")}>start game</button>
+            <button onClick={() => router.push(`/${roomName}/roundOne`)}>
+                start game
+            </button>
         </section>
     );
 }
