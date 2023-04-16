@@ -12,14 +12,29 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { CartContext } from "@/utils/store";
+import { formattedTime } from "@/utils/gameFunctions";
 
 export default function Round1() {
     const router = useRouter();
     const { username, roomName } = useContext(CartContext);
+    const [counter, setCounter] = useState(329);
 
     useEffect(() => {
         if (username === "" || roomName === "") {
             router.push("/login");
+        }
+    });
+
+    useEffect(() => {
+        const timer =
+            counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+        return () => clearInterval(timer);
+    }, [counter]);
+
+    useEffect(() => {
+        if (counter === 0) {
+            onCheck();
+            router.push(`/${roomName}/roundTwo`);
         }
     });
 
@@ -45,7 +60,9 @@ export default function Round1() {
     const { gameId } = router.query;
 
     const onCheck = (event) => {
-        event.preventDefault();
+        if (event) {
+            event.preventDefault();
+        }
         if (productionTime !== undefined && productionTime !== null) {
             const isProductionTimeCorrect =
                 getCorrectProductionTime(productionTime);
@@ -73,6 +90,7 @@ export default function Round1() {
     return (
         <section>
             <h3>Round One : {gameId}</h3>
+            {formattedTime(counter)}
             <div>
                 {roundOnePrompt.map((prompt) => {
                     return (

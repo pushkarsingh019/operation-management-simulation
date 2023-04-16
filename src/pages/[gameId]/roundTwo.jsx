@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useContext } from "react";
 import { CartContext } from "@/utils/store";
 
@@ -13,6 +13,7 @@ import {
 import { getNetValue } from "../../utils/gameFunctions";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { formattedTime } from "../../utils/gameFunctions";
 
 export default function Round2() {
     const { roomName, username } = useContext(CartContext);
@@ -38,7 +39,9 @@ export default function Round2() {
     };
 
     const onFormSubmit = async (event) => {
-        event.preventDefault();
+        if (event) {
+            event.preventDefault();
+        }
         const netValue = getNetValue(lotSize);
         let { data } = await axios.post(`/api/choice`, {
             username,
@@ -49,9 +52,24 @@ export default function Round2() {
         router.push(`/chart/2`);
     };
 
+    const [counter, setCounter] = useState(155);
+
+    useEffect(() => {
+        const timer =
+            counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+        return () => clearInterval(timer);
+    }, [counter]);
+
+    useEffect(() => {
+        if (counter === 0) {
+            onFormSubmit();
+        }
+    });
+
     return (
         <section>
             <h3>Round Two</h3>
+            <p>{formattedTime(counter)}</p>
             <p>
                 {" "}
                 The players in this round will be asked to free up the working

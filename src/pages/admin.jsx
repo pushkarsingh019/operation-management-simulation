@@ -4,8 +4,8 @@ import { useState } from "react";
 export default function AdminScreen() {
     const [roomName, setRoomName] = useState("");
     const [show, setShow] = useState("");
-    const origin = "https://om.stoicpushkar.com";
-    // const origin = "http://localhost:3000";
+    // const origin = "https://om.stoicpushkar.com";
+    const origin = "http://localhost:3000";
     const linkGenerator = (roomName) => `${origin}/${roomName}/login`;
 
     const formSubmitHandler = (event) => {
