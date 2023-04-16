@@ -12,6 +12,7 @@ import {
     Tooltip,
     Legend,
 } from "chart.js";
+import Link from "next/link";
 
 export default function ChartScreen() {
     const router = useRouter();
@@ -66,6 +67,8 @@ export default function ChartScreen() {
     return (
         <section>
             <h3>chart</h3>
+            <Link href={`/${roomName}/roundThree`}>next</Link>
+            <br />
             <button onClick={fetchData}>refresh</button>
             {data.length === 0 ? (
                 <p>no data available</p>
