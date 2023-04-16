@@ -4,10 +4,14 @@ export const CartContext = createContext();
 
 export function CartProvider({children}){
     const [username, setUsername] = useState("");
-    const addUsername = username => setUsername(username)
+    const [roomName, setRoomName] = useState("");
+    const addUsername = username => setUsername(username);
+    const addRoomName = roomName => setRoomName(roomName)
     const store = {
         username,
-        addUsername
+        roomName,
+        addUsername,
+        addRoomName,
     };
     return <CartContext.Provider value={store}>{children}</CartContext.Provider>
 }

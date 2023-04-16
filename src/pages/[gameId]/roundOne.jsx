@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { roundOneHints } from "@/utils/gameData";
 import {
@@ -10,8 +10,19 @@ import {
     calculateAverageWipCost,
 } from "@/utils/roundOneData";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { CartContext } from "@/utils/store";
 
 export default function Round1() {
+    const router = useRouter();
+    const { username, roomName } = useContext(CartContext);
+
+    useEffect(() => {
+        if (username === "" || roomName === "") {
+            router.push("/login");
+        }
+    });
+
     const [productionTime, setProductionTime] = useState();
     const [capacityUtlisation, setCapacityUtilisation] = useState();
     const [labourCost, setLabourCost] = useState();
@@ -30,6 +41,8 @@ export default function Round1() {
     const [labourCostValid, setLabourCostValid] = useState();
     const [costPerUnitValid, setCostPerUnitValid] = useState();
     const [wipCostValid, setWipCostValid] = useState();
+
+    const { gameId } = router.query;
 
     const onCheck = (event) => {
         event.preventDefault();
@@ -59,7 +72,7 @@ export default function Round1() {
 
     return (
         <section>
-            <h3>Round One</h3>
+            <h3>Round One : {gameId}</h3>
             <div>
                 {roundOnePrompt.map((prompt) => {
                     return (
@@ -203,7 +216,7 @@ export default function Round1() {
                 <br />
                 <br />
                 <button onClick={(event) => onCheck(event)}>check</button>
-                <Link href={"/roundTwo"}>next</Link>
+                <Link href={`/${roomName}/roundTwo`}>next</Link>
             </form>
         </section>
     );
