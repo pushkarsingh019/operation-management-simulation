@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import { CartContext } from "@/utils/store";
 import { useRouter } from "next/router";
 
-export default function login() {
+export default function Login() {
     const router = useRouter();
     const [username, setUsername] = useState("");
     const [roomName, setRoomName] = useState("");
