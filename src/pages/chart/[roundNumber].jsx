@@ -19,6 +19,7 @@ export default function ChartScreen() {
     const { roundNumber } = router.query;
     const { roomName } = useContext(CartContext);
     const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         fetchData();
@@ -58,11 +59,14 @@ export default function ChartScreen() {
     };
 
     const fetchData = async () => {
+        setIsLoading(true);
         let { data } = await axios.post("/api/getData", {
             roundNumber,
             roomName,
         });
         setData(data);
+        console.log(data);
+        setIsLoading(false);
     };
     return (
         <section className="screen">
@@ -85,7 +89,9 @@ export default function ChartScreen() {
                     </p>
                 </div>
             </div>
-            {data.length === 0 ? (
+            {isLoading ? (
+                "loading...."
+            ) : data.length === 0 ? (
                 <p>no data available</p>
             ) : (
                 <Bar className="bar-chart" options={options} data={chartData} />

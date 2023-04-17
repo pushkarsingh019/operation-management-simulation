@@ -164,3 +164,17 @@ button {
 .options-flex p {
     margin-left: 15px;
 }
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 30px;
+    background-color: var(--primary-color);
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+}
