@@ -5,13 +5,16 @@ export default function Home() {
     const router = useRouter();
     return (
         <section>
-            <h2>Operation Efficiency Simulation</h2>
-            <div className="flex">
-                <div>
-                    <Link href={`/admin`}>Admin</Link>
+            <div className="center">
+                <div className="choice">
+                    <Link className="link" href={`/admin`}>
+                        Admin
+                    </Link>
                 </div>
-                <div onClick={() => router.push("/login")}>
-                    <Link href={`/login`}>Player</Link>
+                <div className="choice" onClick={() => router.push("/login")}>
+                    <Link className="link" href={`/login`}>
+                        Player
+                    </Link>
                 </div>
             </div>
         </section>

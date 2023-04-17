@@ -16,8 +16,7 @@ export default function Login() {
         router.push("/rules");
     };
     return (
-        <section>
-            <h2>Operational Efficiency Simulation</h2>
+        <section className="center">
             <form onSubmit={onFormSubmit}>
                 <input
                     type="text"
@@ -27,13 +26,15 @@ export default function Login() {
                     required
                 />
                 <br />
+                <br />
                 <input
                     type="text"
-                    placeholder="room name"
+                    placeholder="Enter Room Name"
                     onChange={(event) => setRoomName(event.target.value)}
                     value={roomName}
                     required
                 />
+                <br />
                 <br />
                 <button type="submit">start game</button>
             </form>

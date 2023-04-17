@@ -16,11 +16,11 @@ export default function GameRules() {
         }
     }, [username, router]);
     return (
-        <section>
+        <section className="screen">
             <h2>Hey {username}</h2>
             {rules.map((rule) => {
                 return (
-                    <div key={rule.title}>
+                    <div className="rule" key={rule.title}>
                         <small>{rule.title}</small>
                         <p>{rule.rule}</p>
                     </div>

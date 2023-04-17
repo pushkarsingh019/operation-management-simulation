@@ -13,8 +13,7 @@ export default function AdminScreen() {
         setShow(linkGenerator(roomName));
     };
     return (
-        <section>
-            <h3>Admin Screen</h3>
+        <section className="center-col">
             <form onSubmit={formSubmitHandler}>
                 <input
                     type="text"
@@ -28,7 +27,9 @@ export default function AdminScreen() {
                 <button>Create Room</button>
             </form>
             <br />
-            <Link href={show}>{show}</Link>
+            <p>
+                <Link href={show}>{show}</Link>
+            </p>
         </section>
     );
 }

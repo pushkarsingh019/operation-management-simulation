@@ -65,13 +65,26 @@ export default function ChartScreen() {
         setData(data);
     };
     return (
-        <section>
-            <h3>chart</h3>
-            <Link href={roundNumber == 2 ? `/${roomName}/roundThree` : `/end`}>
-                next
-            </Link>
+        <section className="screen">
             <br />
-            <button onClick={fetchData}>refresh</button>
+            <div className="flex">
+                <h3>Chart</h3>
+                <div className="options-flex">
+                    <Link
+                        className="link"
+                        href={
+                            roundNumber == 2
+                                ? `/${roomName}/roundThree`
+                                : `/end`
+                        }
+                    >
+                        Next
+                    </Link>
+                    <p className="third-button" onClick={fetchData}>
+                        {"   "}refresh
+                    </p>
+                </div>
+            </div>
             {data.length === 0 ? (
                 <p>no data available</p>
             ) : (

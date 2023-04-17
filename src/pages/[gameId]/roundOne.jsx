@@ -88,9 +88,15 @@ export default function Round1() {
     };
 
     return (
-        <section>
-            <h3>Round One : {gameId}</h3>
-            {formattedTime(counter)}
+        <section className="screen">
+            <div className="flex">
+                <h3>Round One</h3>
+                <h3 style={{ color: counter < 20 ? "red" : "black" }}>
+                    {formattedTime(counter)}
+                </h3>
+            </div>
+            <br />
+            <br />
             <div>
                 {roundOnePrompt.map((prompt) => {
                     return (
@@ -105,137 +111,153 @@ export default function Round1() {
                 })}
             </div>
             <br />
-            <form>
-                <label>Total Production Time</label>
+            <form className="flex" onSubmit={(event) => onCheck(event)}>
                 <br />
-                <input
-                    type="Number"
-                    placeholder="Total Production Time"
-                    value={productionTime}
-                    onChange={(event) => setProductionTime(event.target.value)}
-                    required
-                />
-                <br />
-                {productionTimeHint ? (
-                    <small>{roundOneHints.productionTime}</small>
-                ) : (
-                    <small onClick={() => setProductionTimeHint(true)}>
-                        show hint
-                    </small>
-                )}
-                <br />
-                {productionTimeValid === true ? (
-                    <small style={{ color: "green" }}>Correct!</small>
-                ) : productionTimeValid === false ? (
-                    <small style={{ color: "red" }}>Wrong answer</small>
-                ) : null}
-                <br />
-                <br />
-                <label>Capacity Utilisation</label>
-                <br />
-                <input
-                    type="Number"
-                    placeholder="Capacity Utilisation"
-                    value={capacityUtlisation}
-                    onChange={(event) =>
-                        setCapacityUtilisation(event.target.value)
-                    }
-                    required
-                />
-                <br />
-                {capacityUtlisationHint ? (
-                    <small>{roundOneHints.capacityUtlisation}</small>
-                ) : (
-                    <small onClick={() => setCapacityUtilisationHint(true)}>
-                        show hint
-                    </small>
-                )}
-                <br />
-                {capacityUtlisationValid === true ? (
-                    <small style={{ color: "green" }}>Correct!</small>
-                ) : capacityUtlisationValid === false ? (
-                    <small style={{ color: "red" }}>Wrong answer</small>
-                ) : null}
+                <div>
+                    <input
+                        type="Number"
+                        placeholder="Total Production Time"
+                        value={productionTime}
+                        onChange={(event) =>
+                            setProductionTime(event.target.value)
+                        }
+                        required
+                    />
+                    <br />
+                    {productionTimeHint ? (
+                        <small>{roundOneHints.productionTime}</small>
+                    ) : (
+                        <small onClick={() => setProductionTimeHint(true)}>
+                            show hint
+                        </small>
+                    )}
+                    <br />
+                    {productionTimeValid === true ? (
+                        <small style={{ color: "green" }}>Correct!</small>
+                    ) : productionTimeValid === false ? (
+                        <small style={{ color: "red" }}>Wrong answer</small>
+                    ) : null}
+                </div>
                 <br />
                 <br />
-                <label>Labour Cost</label>
                 <br />
-                <input
-                    type="Number"
-                    placeholder="Labour Cost"
-                    value={labourCost}
-                    onChange={(event) => setLabourCost(event.target.value)}
-                    required
-                />
-                <br />
-                {labourCostHint ? (
-                    <small>{roundOneHints.labourCost}</small>
-                ) : (
-                    <small onClick={() => setLabourCostHint(true)}>
-                        show hint
-                    </small>
-                )}
-                <br />
-                {labourCostValid === true ? (
-                    <small style={{ color: "green" }}>Correct!</small>
-                ) : labourCostValid === false ? (
-                    <small style={{ color: "red" }}>Wrong answer</small>
-                ) : null}
-                <br />
-                <br />
-                <label>Cost Per Unit</label>
-                <br />
-                <input
-                    type="Number"
-                    placeholder="Cost per unit"
-                    value={costPerUnit}
-                    onChange={(event) => setCostPerUnit(event.target.value)}
-                    required
-                />
-                <br />
-                {costPerUnitHint ? (
-                    <small>{roundOneHints.costPerUnit}</small>
-                ) : (
-                    <small onClick={() => setCostPerUnitHint(true)}>
-                        show hint
-                    </small>
-                )}
-                <br />
-                {costPerUnitValid === true ? (
-                    <small style={{ color: "green" }}>Correct!</small>
-                ) : costPerUnitValid === false ? (
-                    <small style={{ color: "red" }}>Wrong answer</small>
-                ) : null}
+                <div>
+                    <input
+                        type="Number"
+                        placeholder="Capacity Utilisation"
+                        value={capacityUtlisation}
+                        onChange={(event) =>
+                            setCapacityUtilisation(event.target.value)
+                        }
+                        required
+                    />
+                    <br />
+                    {capacityUtlisationHint ? (
+                        <small>{roundOneHints.capacityUtlisation}</small>
+                    ) : (
+                        <small onClick={() => setCapacityUtilisationHint(true)}>
+                            show hint
+                        </small>
+                    )}
+                    <br />
+                    {capacityUtlisationValid === true ? (
+                        <small style={{ color: "green" }}>Correct!</small>
+                    ) : capacityUtlisationValid === false ? (
+                        <small style={{ color: "red" }}>Wrong answer</small>
+                    ) : null}
+                </div>
                 <br />
                 <br />
-                <label>Average Work In Progress Cost</label>
                 <br />
-                <input
-                    type="Number"
-                    placeholder="Average wip cost"
-                    value={wipCost}
-                    onChange={(event) => setWipCost(event.target.value)}
-                    required
-                />
+                <div>
+                    <input
+                        type="Number"
+                        placeholder="Labour Cost"
+                        value={labourCost}
+                        onChange={(event) => setLabourCost(event.target.value)}
+                        required
+                    />
+                    <br />
+                    {labourCostHint ? (
+                        <small>{roundOneHints.labourCost}</small>
+                    ) : (
+                        <small onClick={() => setLabourCostHint(true)}>
+                            show hint
+                        </small>
+                    )}
+                    <br />
+                    {labourCostValid === true ? (
+                        <small style={{ color: "green" }}>Correct!</small>
+                    ) : labourCostValid === false ? (
+                        <small style={{ color: "red" }}>Wrong answer</small>
+                    ) : null}
+                </div>
                 <br />
-                {wipCostHint ? (
-                    <small>{roundOneHints.averageWipCost}</small>
-                ) : (
-                    <small onClick={() => setWipCostHint(true)}>
-                        show hint
-                    </small>
-                )}
                 <br />
-                {wipCostValid === true ? (
-                    <small style={{ color: "green" }}>Correct!</small>
-                ) : wipCostValid === false ? (
-                    <small style={{ color: "red" }}>Wrong answer</small>
-                ) : null}
+                <br />
+                <div>
+                    <input
+                        type="Number"
+                        placeholder="Cost per unit"
+                        value={costPerUnit}
+                        onChange={(event) => setCostPerUnit(event.target.value)}
+                        required
+                    />
+                    <br />
+                    {costPerUnitHint ? (
+                        <small>{roundOneHints.costPerUnit}</small>
+                    ) : (
+                        <small onClick={() => setCostPerUnitHint(true)}>
+                            show hint
+                        </small>
+                    )}
+                    <br />
+                    {costPerUnitValid === true ? (
+                        <small style={{ color: "green" }}>Correct!</small>
+                    ) : costPerUnitValid === false ? (
+                        <small style={{ color: "red" }}>Wrong answer</small>
+                    ) : null}
+                </div>
+                <br />
+                <br />
+                <br />
+                <div>
+                    <input
+                        type="Number"
+                        placeholder="Average wip cost"
+                        value={wipCost}
+                        onChange={(event) => setWipCost(event.target.value)}
+                        required
+                    />
+                    <br />
+                    {wipCostHint ? (
+                        <small>{roundOneHints.averageWipCost}</small>
+                    ) : (
+                        <small onClick={() => setWipCostHint(true)}>
+                            show hint
+                        </small>
+                    )}
+                    <br />
+                    {wipCostValid === true ? (
+                        <small style={{ color: "green" }}>Correct!</small>
+                    ) : wipCostValid === false ? (
+                        <small style={{ color: "red" }}>Wrong answer</small>
+                    ) : null}
+                </div>
                 <br />
                 <br />
                 <button onClick={(event) => onCheck(event)}>check</button>
-                <Link href={`/${roomName}/roundTwo`}>next</Link>
             </form>
+            <br />
+            <br />
+            <div style={{ textAlign: "center" }}>
+                <button
+                    className="secondary-button"
+                    onClick={() => router.push(`/${roomName}/roundTwo`)}
+                >
+                    next
+                </button>
+            </div>
         </section>
     );
 }

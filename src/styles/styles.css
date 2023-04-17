@@ -1,0 +1,166 @@
+
+:root{
+    --primary-color : #d4d4d4;
+    --text-color : #181823;
+    --gray-color : #6b7280;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 35px;
+    background-color: var(--primary-color);
+}
+
+nav {
+    display: flex;
+    list-style: none;
+}
+
+nav .li {
+    margin-right: 30px;
+    text-decoration: none;
+    color: var(--text-color)
+}
+
+.link {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+/* screen */
+.screen {
+    padding: 50px 80px;
+}
+
+/* center */
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    width: 100vw;
+}
+
+.center-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    width: 100vw;
+}
+
+.choice {
+    border: 1px solid var(--primary-color);
+    padding: 20px 35px;
+    margin-right: 20px;
+    border-radius: 12px;
+}
+
+.choice:hover{
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.choice .link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+
+/* login */
+form input {
+    padding: 12px 15px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--text-color);
+}
+
+button {
+    padding: 12px 15px;
+    background-color: var(--text-color);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.rule {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.screen button {
+    width: 10%;
+}
+
+.screen small {
+    color: var(--gray-color);
+}
+
+.screen p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.form-col {
+    columns: 2;
+    padding: 0px 40px;
+}
+
+.secondary-button {
+    padding: 12px 15px;
+    border: 1px solid var(--text-color);
+    color: #181823;
+    background-color: white;
+    border-radius: 12px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.secondary-button:hover{
+    background-color: var(--text-color);
+    color: white;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.third-button {
+    padding: 1px 8px;
+    border: 1px solid var(--text-color);
+    background-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.options-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.options-flex p {
+    margin-left: 15px;
+}

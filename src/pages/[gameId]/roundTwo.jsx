@@ -67,9 +67,15 @@ export default function Round2() {
     });
 
     return (
-        <section>
-            <h3>Round Two</h3>
-            <p>{formattedTime(counter)}</p>
+        <section className="screen">
+            <div className="flex">
+                <h3>Round Two</h3>
+                <h3 style={{ color: counter < 20 ? "red" : "black" }}>
+                    {formattedTime(counter)}
+                </h3>
+            </div>
+            <br />
+            <br />
             <p>
                 {" "}
                 The players in this round will be asked to free up the working
@@ -80,75 +86,78 @@ export default function Round2() {
             </p>
             <br />
             <br />
-            <form onSubmit={(event) => onFormSubmit(event)}>
-                <label>Lot Size</label>
-                <input
-                    type="range"
-                    placeholder="lot size"
-                    min={50000}
-                    max={60000}
-                    value={lotSize}
-                    onChange={(event) => lotSizeHandler(event)}
-                />
-                <small>
-                    {"   "}
-                    {lotSize}
-                </small>
+            <label htmlFor="">Lot size : {lotSize}</label>
+            <br />
+            <input
+                type="range"
+                placeholder="lot size"
+                min={50000}
+                max={60000}
+                value={lotSize}
+                onChange={(event) => lotSizeHandler(event)}
+            />
+            <br />
+            <br />
+            <form onSubmit={(event) => onFormSubmit(event)} className="flex">
+                <div>
+                    <label>Total Production Time</label>
+                    <br />
+                    <input
+                        type="Number"
+                        placeholder="Total Production Time"
+                        value={productionTime}
+                        disabled
+                    />
+                </div>
+                <div>
+                    <label>Capacity Utilisation</label>
+                    <br />
+                    <input
+                        type="Number"
+                        placeholder="Capacity Utilisation"
+                        value={capacityUtlisation}
+                        disabled
+                    />
+                </div>
+                <div>
+                    <label>Labour Cost</label>
+                    <br />
+                    <input
+                        type="Number"
+                        placeholder="Labour Cost"
+                        value={labourCost}
+                        disabled
+                    />
+                </div>
+                <div>
+                    <label>Cost Per Unit</label>
+                    <br />
+                    <input
+                        type="Number"
+                        placeholder="Cost per unit"
+                        value={costPerUnit}
+                        disabled
+                    />
+                </div>
+                <div>
+                    <label>Average Work In Progress Cost</label>
+                    <br />
+                    <input
+                        type="Number"
+                        placeholder="Average wip cost"
+                        value={wipCost}
+                        disabled
+                    />
+                </div>
                 <br />
                 <br />
-                <label>Total Production Time</label>
                 <br />
-                <input
-                    type="Number"
-                    placeholder="Total Production Time"
-                    value={productionTime}
-                    disabled
-                />
-                <br />
-                <br />
-                <label>Capacity Utilisation</label>
-                <br />
-                <input
-                    type="Number"
-                    placeholder="Capacity Utilisation"
-                    value={capacityUtlisation}
-                    disabled
-                />
-                <br />
-                <br />
-                <label>Labour Cost</label>
-                <br />
-                <input
-                    type="Number"
-                    placeholder="Labour Cost"
-                    value={labourCost}
-                    disabled
-                />
-                <br />
-                <br />
-                <label>Cost Per Unit</label>
-                <br />
-                <input
-                    type="Number"
-                    placeholder="Cost per unit"
-                    value={costPerUnit}
-                    disabled
-                />
-                <br />
-                <br />
-                <label>Average Work In Progress Cost</label>
-                <br />
-                <input
-                    type="Number"
-                    placeholder="Average wip cost"
-                    value={wipCost}
-                    disabled
-                />
-                <br />
-                <br />
-                <br />
-                <button type="submit">Next</button>
             </form>
+            <br />
+            <br />
+            <div className="center-text">
+                <button onClick={onFormSubmit}>Next</button>
+            </div>
         </section>
     );
 }
