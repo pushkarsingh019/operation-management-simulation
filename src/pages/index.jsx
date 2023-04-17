@@ -20,3 +20,5 @@ export default function Home() {
         </section>
     );
 }
+
+// changing serverless functions locations
