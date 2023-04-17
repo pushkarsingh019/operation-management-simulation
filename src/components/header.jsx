@@ -8,14 +8,14 @@ export default function Header() {
                     Operational Efficiency Simulation
                 </Link>
             </h2>
-            <nav>
+            {/* <nav>
                 <Link className="li" href={`/chart/2`}>
                     Charts - Round 2
                 </Link>
                 <Link className="li" href={`/chart/3`}>
                     Charts - Round 3
                 </Link>
-            </nav>
+            </nav> */}
         </header>
     );
 }

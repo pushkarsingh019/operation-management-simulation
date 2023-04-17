@@ -68,6 +68,17 @@ export default function ChartScreen() {
         console.log(data);
         setIsLoading(false);
     };
+
+    const getHighest = (data) =>
+        data.reduce(
+            (acc, choice) =>
+                choice.netValue > acc.netValue ? (acc = choice) : acc,
+            data[0]
+        );
+
+    const getWinner = ({ username, netValue }) =>
+        `${username} wins this round with a net value of ${netValue}`;
+
     return (
         <section className="screen">
             <br />
@@ -89,6 +100,17 @@ export default function ChartScreen() {
                     </p>
                 </div>
             </div>
+            <br />
+            <br />
+            <p className="center-text">
+                {isLoading
+                    ? ""
+                    : data.length === 0
+                    ? ""
+                    : getWinner(getHighest(data))}
+            </p>
+            <br />
+            <br />
             {isLoading ? (
                 "loading...."
             ) : data.length === 0 ? (
