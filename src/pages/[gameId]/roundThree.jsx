@@ -47,7 +47,7 @@ export default function Round3() {
             username,
             roomName,
             netValue,
-            roundNumber: 2,
+            roundNumber: 3,
         });
         router.push(`/chart/3`);
     };
